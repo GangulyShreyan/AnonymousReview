@@ -48,7 +48,9 @@
                         meseg =Object.values(userdata[1]);
                         console.log(username,message);
                         namew.innerHTML = username;
-                        var ul = document.getElementById("messagelist")
+                        var ul = document.getElementById("messagelist");
+                        $('#messagelist').empty();
+
                         for (var i = 0; i < meseg.length; i++) {
                             var message = Object.values( meseg[i]);
                             var li = document.createElement('li');
