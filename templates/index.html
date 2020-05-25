@@ -6,43 +6,93 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet"> 
+        <link href='https://fonts.googleapis.com/css?family=Tinos' rel='stylesheet'>
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Khand:wght@300&display=swap" rel="stylesheet"> 
+
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+        <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='styles/index.css')}}">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
         <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
     </head>
 
     <body>
-        <div class = "container">
-            <form action="">
-                <h1>Sign In</h1>
-                <p>Enter Email : </p>
-                <input id = "signinemail" placeholder="Email">
-                <p>Enter password : </p>
-                <input id = "signinpass" placeholder = "password">
-                <button id="btn-signin" type="button">Sign In
-                </button>
-            </form>
-            <form action = "">
-                <h1>Sign Up</h1>
-                <p>Enter UserName : </p>
-                <input id ="signupname" placeholder="Username">
-                <p>Enter Email : </p>
-                <input id = "signupemail" placeholder="Email">
-                <p>Enter password : </p>
-                <input id = "signuppass" placeholder = "password">
-                <button id="btn-signup" type="button">Sign Up
-                </button>
-                
-            </form>
-
-
+        <div class = "row">
+            <div class = "col-sm">
+                <h2 ID = "logo"><span class="flow-text">ANONYMOUS REVIEW</span></h2>
+            </div>
+            <div class = "col-sm-5">
+                <div class="container shadow-lg p-3 mb-5 rounded" style="max-width:60%;margin-top: 10%;">
+                    <form action="">
+                        <h1 id="signintext">Log In</h1>
+                        <hr class="solid">
+                        <div class="divider"></div>
+                        <p id="formtext">Enter Email : </p>
+                        <input id = "signinemail" placeholder="Email" style="margin-top:-15px;" class="form-control transparent-input border" >
+                        <p id="formtext">Enter password : </p>
+                        <input id = "signinpass" placeholder = "Password" style="margin-top:-15px;" class="form-control transparent-input border">
+                        <div class = "text-center">
+                            <button id="btn-signin" type="button"  class="btn btn-outline-primary " style="margin-top:10px;">Log In
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
+        <div class = "row">
+            <div class = "col-sm">
+                <h2 ID = "abouttext"><span class="flow-text">Make the World a better place,
+
+                    by your anonymous reviews!</span></h2>
+            </div>
+            <div class = "col-sm-5">
+                <p id="signuptext" style="margin-top: 5%;">New here? No worries, sign up real quick and get started.</p>
+                <div class="container shadow-lg p-3 mb-5 rounded" style="max-width:60%;margin-top: 2%;">
+                    <form action="">
+                        <h1 id="signintext">Sign Up</h1>
+                        <hr class="solid">
+                        <div class="divider"></div>
+                        <p id="formtext">Enter UserName : </p>
+                        <input id ="signupname" placeholder="Username" style="margin-top:-15px;" class="form-control transparent-input border" >
+                        <p id="formtext">Enter Email : </p>
+                        <input id = "signupemail" placeholder="Email" style="margin-top:-15px;" class="form-control transparent-input border">
+                        <p id="formtext">Enter password : </p>
+                        <input id = "signuppass" placeholder = "password" style="margin-top:-15px;" class="form-control transparent-input border">
+                        <div class = "text-center">
+                            <button id="btn-signup" type="reset"  class="btn btn-outline-primary " style="margin-top:10px;">Sign Up
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!--<div class = "col s12 m6 l6">
+                <form action = "">
+                    <h1>Sign Up</h1>
+                    <p>Enter UserName : </p>
+                    <input id ="signupname" placeholder="Username">
+                    <p>Enter Email : </p>
+                    <input id = "signupemail" placeholder="Email">
+                    <p>Enter password : </p>
+                    <input id = "signuppass" placeholder = "password">
+                    <button id="btn-signup" type="button">Sign Up
+                    </button>
+                </form>
+            </div> -->
+        </div>
+
 
         <script type="text/javascript" src="{{url_for('static', filename='index.js')}}"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
     </body>
 </html>

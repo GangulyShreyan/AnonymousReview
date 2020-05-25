@@ -33,30 +33,37 @@
                console.log("ok");
             });
 
+            
+
             $('#btn-submit').click(function(){
                 window.alert("okay");
                 var usermessage = $('#signupmessage').val();
                 var id = '{{ id }}';
 
-                var timestamp = new Date().getUTCMilliseconds();
-                
-                var usermessageRef = firebase.database().ref().child("Users").child(id).child("zmessage").child(timestamp);
+                firebase.database().ref("/.info/serverTimeOffset").on('value', function(offset) {
+                    var offsetVal = offset.val() || 0;
+                    var serverTime = Date.now() + offsetVal;
 
-                var userData= {
-                    "Message" : usermessage
-                };
-                JSON.parse( JSON.stringify(userData ) );
+                    
 
-                window.alert(userData);
+                    var usermessageRef = firebase.database().ref().child("Users").child(id).child("zmessage").child(serverTime);
 
-                usermessageRef.set(userData, function(error){
-                    if(error){
-                        var errorCode = error.code;
-                        var errorMessage = error.message;
-                        console.log(errorCode);
-                        window.alert("Message : "+ errorMessage);
-                    }
-                });
+                    var userData= {
+                        "Message" : usermessage
+                    };
+                    JSON.parse( JSON.stringify(userData ) );
+
+                    window.alert(userData);
+
+                    usermessageRef.set(userData, function(error){
+                        if(error){
+                            var errorCode = error.code;
+                            var errorMessage = error.message;
+                            console.log(errorCode);
+                            window.alert("Message : "+ errorMessage);
+                        }
+                    });
+            });
 
 });
 

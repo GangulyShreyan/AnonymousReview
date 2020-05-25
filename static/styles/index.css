@@ -1,0 +1,39 @@
+body{
+    background-color: #dce775;
+}
+
+#logo{
+    font-family: 'Julius Sans One', sans-serif;
+    
+    letter-spacing: 5px;
+    text-align: center;
+    margin-top: 30%;
+}
+
+#abouttext{
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+}
+
+#signintext{
+    font-family: 'Courgette', cursive;
+    text-align: center;
+}
+
+#formtext{
+    font-family: 'Tinos';
+}
+
+input.transparent-input{
+    background-color:rgba(0,0,0,0) !important;
+    border:none !important;
+ }
+
+form{
+    border:1px solid #dce775;
+}
+
+#signuptext{
+    font-family: 'Khand', sans-serif;
+    text-align: center;
+}
