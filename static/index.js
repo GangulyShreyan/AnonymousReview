@@ -76,7 +76,7 @@ var firebaseConfig = {
     firebase.auth().onAuthStateChanged(function(user){
         if(user)
         {
-            window.location.href = "home.html";
+            window.location.href = "home";
         }
     });
 });
@@ -84,7 +84,7 @@ var firebaseConfig = {
 
 $('#btn-logout').click(function(){
     firebase.auth().signOut().then(function() {
-        window.location.href = "";
+        window.location.href = "index.html";
       }, function(error) {
         // An error happened.
       });

@@ -18,29 +18,50 @@
     <body>
         <h1>Welcome  <h1 id ="namew"></h1></h1>
 
-        <button id="btn-logout"></button>
+        <h1>Share and make chance for others!</h1>
+        <h3 id = "sharelink"></h3>
+
+        <button id="btn-logout">LogOut</button>
+
+        <h1>Messages : </h1>
+        <ul id = "messagelist"></ul>
+
 
 
 
 
         <script type="text/javascript" src="{{url_for('static', filename='index.js')}}"></script>
         <script>
+            currenturl = (window.location.href).substring(0, (window.location.href).length - 4);
            firebase.auth().onAuthStateChanged(function(user){
                 if(!user)
                 {
                     window.location.href = "index.html";
                 }else{
                     var userID = firebase.auth().currentUser.uid;
-                    console.log(userID);
+                    var sarelink = currenturl + userID;
+                    sharelink.innerHTML = sarelink;
                     firebase.database().ref('Users/'+ userID ).on('value',(snap)=>{
                         var data = snap.val();
                         var userdata = Object.values(data); 
-                        console.log(userdata);
                         username = userdata[0];
+                        meseg =Object.values(userdata[1]);
+                        console.log(username,message);
                         namew.innerHTML = username;
+                        var ul = document.getElementById("messagelist")
+                        for (var i = 0; i < meseg.length; i++) {
+                            var message = Object.values( meseg[i]);
+                            var li = document.createElement('li');
+                            li.appendChild(document.createTextNode(message));
+                            ul.appendChild(li);
+                        }
+
                     });
                 }
             });
+            
+
+
 
         </script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
