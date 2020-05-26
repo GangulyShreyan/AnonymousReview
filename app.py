@@ -7,7 +7,7 @@ def index():
     return render_template('index.html')
 
 @app.route('/index.html')
-def indexx():
+def indexxx():
     return render_template('index.html')
 
 @app.route('/home')
@@ -17,5 +17,6 @@ def home():
 @app.route('/<uid>')
 def message(uid):
     return render_template('submit.html', id = uid )
+
 
 app.run(debug = True)
