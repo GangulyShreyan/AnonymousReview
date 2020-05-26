@@ -6,6 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+        <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Gentium+Basic&display=swap" rel="stylesheet"> 
+
+
+        <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='styles/submit.css')}}">
+
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
@@ -14,58 +20,74 @@
         <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
     </head>
 
-    <body>
-
-        <form action = "">
-            <h1>Message</h1>
-            <p>Enter Message : </p>
-            <input id = "signupmessage" placeholder = "password">
-            <button id="btn-submit" type="button">Sign Up
-            </button>
-            
+    <body style = "background-color: #dce775;">
+        <div class = "container">
+        <a href = "index.html" style= " text-decoration: none;"><h2 ID = "logo"><span class="flow-text">ANONYMOUS REVIEW</span></h2></a>
+        <div class = "text-center">
+            <form action = "" >
+                <h1 id="abouttext">LEAVE A CONSTRUCTIVE MESSAGE FOR <h1 id="username" style="font-family: 'Gentium Basic', serif;"></h1>
+                <div class = "text-center">
+                <textarea class="form-control shadow-lg p-3 mb-5 rounded" id = "signupmessage" placeholder = "Leave a message! :)" row = "3"></textarea>
+                <button id="btn-submit" type="reset" class="btn btn-outline-info">SEND!
+                </button>
+            </form>
+            <h2 id = "abouttext" style = "margin-top: 10%;">TRY IT FOR YOURSELF: </h2>
+            <form action = "/index.html">
+            <button class="btn btn-outline-info" >Go to Site</button>
         </form>
+        </div>
 
 
 
         <script type="text/javascript" src="{{url_for('static', filename='index.js')}}"></script>
         <script>
            firebase.auth().onAuthStateChanged(function(user){
-               console.log("ok");
+               //console.log("ok");
             });
 
-            
+            var id = '{{ id }}';
+            firebase.database().ref('Users/'+ id ).on('value',(snap)=>{
+                        var data = snap.val();
+                        var userdata = Object.values(data); 
+                        username.innerHTML = userdata[0];
+                });
 
             $('#btn-submit').click(function(){
-                window.alert("okay");
+                //window.alert("okay");
                 var usermessage = $('#signupmessage').val();
                 var id = '{{ id }}';
 
-                firebase.database().ref("/.info/serverTimeOffset").on('value', function(offset) {
-                    var offsetVal = offset.val() || 0;
-                    var serverTime = Date.now() + offsetVal;
+                if(usermessage != ""){
+                        firebase.database().ref("/.info/serverTimeOffset").on('value', function(offset) {
+                        var offsetVal = offset.val() || 0;
+                        var serverTime = Date.now() + offsetVal;
 
-                    
+                        
 
-                    var usermessageRef = firebase.database().ref().child("Users").child(id).child("zmessage").child(serverTime);
+                        var usermessageRef = firebase.database().ref().child("Users").child(id).child("zmessage").child(serverTime);
 
-                    var userData= {
-                        "Message" : usermessage
-                    };
-                    JSON.parse( JSON.stringify(userData ) );
+                        var userData= {
+                            "Message" : usermessage
+                        };
+                        JSON.parse( JSON.stringify(userData ) );
 
-                    window.alert(userData);
+                        //window.alert(userData);
 
-                    usermessageRef.set(userData, function(error){
-                        if(error){
-                            var errorCode = error.code;
-                            var errorMessage = error.message;
-                            console.log(errorCode);
-                            window.alert("Message : "+ errorMessage);
-                        }
-                    });
+                        usermessageRef.set(userData, function(error){
+                            if(error){
+                                var errorCode = error.code;
+                                var errorMessage = error.message;
+                                console.log(errorCode);
+                                window.alert("Message : "+ errorMessage);
+                            }
+                        });
+                });
+                }else{
+                    window.alert("Enter some Text :<");
+                }
+
             });
 
-});
 
         </script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
