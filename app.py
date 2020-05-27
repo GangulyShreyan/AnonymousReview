@@ -18,4 +18,3 @@ def home():
 def message(uid):
     return render_template('submit.html', id = uid )
 
-app.run(debug = True)
