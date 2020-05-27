@@ -80,7 +80,16 @@
         <script type="text/javascript" src="{{url_for('static', filename='index.js')}}"></script>
         <script>
             currenturl = (window.location.href).substring(0, (window.location.href).length - 4);
-
+            
+            function copyElementText(id) {
+                var text = document.getElementById(id).innerText;
+                var elem = document.createElement("textarea");
+                document.body.appendChild(elem);
+                elem.value = text;
+                elem.select();
+                document.execCommand("copy");
+                document.body.removeChild(elem);
+            }
 
             
            firebase.auth().onAuthStateChanged(function(user){
@@ -95,9 +104,11 @@
                         var data = snap.val();
                         var userdata = Object.values(data); 
                         username = userdata[0];
-                        meseg =Object.values(userdata[1]);
-                        //console.log(username,message);
                         namew.innerHTML = username;
+                        if(userdata[1]!=''){
+                        meseg =Object.values(userdata[1]);}
+                        //console.log(username,message);
+                        
                         var ul = document.getElementById("messagelist");
                         $('#messagelist').empty();
 
@@ -112,15 +123,7 @@
                 }
             });
 
-            function copyElementText(id) {
-                var text = document.getElementById(id).innerText;
-                var elem = document.createElement("textarea");
-                document.body.appendChild(elem);
-                elem.value = text;
-                elem.select();
-                document.execCommand("copy");
-                document.body.removeChild(elem);
-            }
+            
 
             $('#sharewapp').click(function(){
                 
