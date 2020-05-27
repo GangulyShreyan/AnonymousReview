@@ -1,0 +1,66 @@
+#logo{
+    font-family: 'Julius Sans One', sans-serif;
+    letter-spacing: 5px;
+    text-align: center;
+    margin-top:1%;
+    color : #2979ff;
+}
+
+#namew{
+    font-family: 'Tinos', sans-serif;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-top: -6px;
+}
+
+
+#welcometext{
+    font-family: 'Tinos', sans-serif;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-top:5%;
+    font-size: 60px;
+}
+
+#sharelink{
+    text-align: center;
+    font-size: 15px;
+    
+}
+
+#link {
+    font-size: 20px;
+    text-align: center;
+    margin-top:5%;
+}
+
+
+
+.tilesWrap {
+	padding: 0;
+	margin: 50px auto;
+	list-style: none;
+	text-align: center;
+}
+.tilesWrap li {
+    font-family: 'Tinos', sans-serif;
+	display: inline-block;
+	width: 20%;
+	min-width: 200px;
+	max-width: 230px;
+	padding: 80px 20px 40px;
+	position: relative;
+	vertical-align: top;
+	margin: 10px;
+	min-height: 25vh; 
+    background: #614385; 
+    background: -webkit-linear-gradient(to right, #516395, #614385);  
+    background: linear-gradient(to right, #516395, #614385); 
+    box-shadow: 5px 10px;
+	border: 1px solid #252727;
+    text-align: left;
+    color:white;
+    text-align: center;
+}
+
+
