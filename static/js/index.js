@@ -58,6 +58,7 @@ var firebaseConfig = {
 
     if(email != "" && password != ""){
       var result = firebase.auth().signInWithEmailAndPassword(email, password);
+      loadingtext.innerHTML = "Signing In ...";
 
 
       result.catch(function(error){
